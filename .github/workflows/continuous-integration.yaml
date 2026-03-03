@@ -17,13 +17,19 @@ jobs:
         php-version:
           - '8.3'
           - '8.4'
+          - '8.5'
         symfony-version:
           - '6.4.*'
-          - '7.2.*'
+          - '7.4.*'
+        include:
+          - php-version: '8.4'
+            symfony-version: '8.0.*'
+          - php-version: '8.5'
+            symfony-version: '8.0.*'
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 2
 

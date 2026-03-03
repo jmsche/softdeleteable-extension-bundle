@@ -15,7 +15,7 @@ use Doctrine\ORM\Tools\SchemaTool;
 use Doctrine\Persistence\ObjectManager;
 use Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter;
 use Gedmo\SoftDeleteable\SoftDeleteableListener;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use StichtingSD\SoftDeleteableExtensionBundle\EventListener\OnSoftDeleteEventSubscriber;
@@ -28,13 +28,13 @@ abstract class BaseTestCase extends TestCase
     private ?ObjectManager $objectManager = null;
 
     /**
-     * @var MockObject&LoggerInterface
+     * @var Stub&LoggerInterface
      */
     protected $queryLogger;
 
     protected function setUp(): void
     {
-        $this->queryLogger = $this->createMock(LoggerInterface::class);
+        $this->queryLogger = self::createStub(LoggerInterface::class);
     }
 
     protected function getObjectManager(array $entities, bool $forceRecreate = false, array $entityPaths = [__DIR__]): EntityManager
@@ -59,6 +59,11 @@ abstract class BaseTestCase extends TestCase
         $config->setMetadataDriverImpl(new AttributeDriver($entityPaths));
         $config->addFilter('softdeleteable', SoftDeleteableFilter::class);
         $evm->addEventSubscriber(new SoftDeleteableListener());
+        if (\PHP_VERSION_ID < 80400) {
+            $config->setAutoGenerateProxyClasses(true);
+        } else {
+            $config->enableNativeLazyObjects(true);
+        }
 
         $connection = DriverManager::getConnection($conn, $config);
         $entityManager = new EntityManager($connection, $config, $evm);

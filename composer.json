@@ -11,9 +11,9 @@
         }
     ],
     "scripts": {
-        "cs-fixer": "PHP_CS_FIXER_IGNORE_ENV=1 bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php",
-        "phpstan": "bin/phpstan analyze",
-        "phpunit": "bin/phpunit"
+        "cs-fixer": "@php bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php",
+        "phpstan": "@php bin/phpstan analyze",
+        "phpunit": "@php bin/phpunit"
     },
     "keywords": [
         "softdeleteable",
@@ -27,14 +27,14 @@
     "require": {
         "php": ">=8.3",
         "doctrine/common": "^2.13 || ^3.0",
-        "doctrine/doctrine-bundle": "^2.7",
+        "doctrine/doctrine-bundle": "^2.7 || ^3.0",
         "doctrine/orm": "^3.0",
         "gedmo/doctrine-extensions": "^3.16",
-        "symfony/config": "^6.4 || ^7.2",
-        "symfony/dependency-injection": "^6.4 || ^7.2",
-        "symfony/framework-bundle": "^6.4 || ^7.2",
-        "symfony/http-kernel": "^6.4 || ^7.2",
-        "symfony/property-access": "^6.4 || ^7.2"
+        "symfony/config": "^6.4 || ^7.2 || ^8.0",
+        "symfony/dependency-injection": "^6.4 || ^7.2 || ^8.0",
+        "symfony/framework-bundle": "^6.4 || ^7.2 || ^8.0",
+        "symfony/http-kernel": "^6.4 || ^7.2 || ^8.0",
+        "symfony/property-access": "^6.4 || ^7.2 || ^8.0"
     },
     "require-dev": {
         "doctrine/cache": "^2.0",

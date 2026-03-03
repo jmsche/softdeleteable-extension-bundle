@@ -1,6 +1,6 @@
 # SoftDeleteableExtensionBundle
 
-## Warning: This bundle only works with Symfony ^6.4 || ^7.2 and PHP ^8.3
+## Warning: This bundle only works with Symfony ^6.4 || ^7.2 || ^8.0 and PHP ^8.3
 <hr />
 
 This bundle is created to handle soft deletes for associated entities/documents in addition to the functionality of Gedmo SoftDelete.
@@ -11,9 +11,9 @@ Entities that have 10.000+ relations are updated in a split second.
 
 ## Prerequisites
 
-**This bundle requires Symfony ^6.4 || ^7.2 or higher and PHP ^8.3 or higher**
-- Symfony ^6.4 || ^7.2
-- PHP ^8.4
+**This bundle requires Symfony ^6.4 || ^7.2 || ^8.0 and PHP ^8.3**
+- Symfony ^6.4 || ^7.2 || ^8.0
+- PHP ^8.3
 - gedmo/doctrine-extensions ^3.16
 
 ## Installation
